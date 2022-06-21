@@ -1,0 +1,5 @@
+{
+    "editor.renderWhitespace": "boundary",
+    "python.formatting.provider": "black",
+    "cornflakes.linter.executablePath": ".venv/bin/flake8"
+}
