@@ -45,9 +45,7 @@ def write_to_csv(results, filename):
                 "velocity_km_s": result.velocity,
                 "designation": result._designation,
                 "name": result.neo.name,
-                "diameter_km": ""
-                if isnan(result.neo.diameter)
-                else result.neo.diameter,
+                "diameter_km": result.neo.diameter,
                 "potentially_hazardous": result.neo.hazardous,
             }
         )
@@ -82,9 +80,7 @@ def write_to_json(results, filename):
                 "neo": {
                     "designation": result.neo.designation,
                     "name": result.neo.name,
-                    "diameter_km": ""
-                    if isnan(result.neo.diameter)
-                    else result.neo.diameter,
+                    "diameter_km": result.neo.diameter,
                     "potentially_hazardous": result.neo.hazardous,
                 },
             }
