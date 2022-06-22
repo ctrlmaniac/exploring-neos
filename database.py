@@ -54,13 +54,10 @@ class NEODatabase:
             if neo.name not in self.neos_by_name:
                 self.neos_by_name[neo.name] = neo
 
-            for approach in self._approaches:
-                if approach._designation == neo.designation:
-                    neo.approaches.append(approach)
-
         for approach in self._approaches:
-            if approach._designation in self.neos_by_designation:
-                approach.neo = self.neos_by_designation[approach._designation]
+            neo = self.neos_by_designation[approach._designation]
+            approach.neo = neo
+            neo.approaches.append(approach)
 
     def get_neo_by_designation(self, designation):
         """Find and return an NEO by its primary designation.
@@ -107,6 +104,18 @@ class NEODatabase:
         :param filters: A collection of filters capturing user-specified criteria.
         :return: A stream of matching `CloseApproach` objects.
         """
-        # TODO: Generate `CloseApproach` objects that match all of the filters.
-        for approach in self._approaches:
-            yield approach
+        if len(filters):
+            for approach in self._approaches:
+                filtered = False
+
+                for filter in filters:
+                    filtered = filter(approach)
+
+                    if not filtered:
+                        break
+
+                if filtered:
+                    yield approach
+        else:
+            for approach in self._approaches:
+                yield approach
