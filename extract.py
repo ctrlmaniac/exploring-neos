@@ -27,7 +27,7 @@ def load_neos(neo_csv_path=neo_csv_path):
                 NearEarthObject(
                     pdes=row.get("pdes", ""),
                     name=row["name"] or None,
-                    diameter=row.get("diameter", float("nan")),
+                    diameter=row.get("diameter", float("NaN")),
                     pha=True if row["pha"] == "Y" else False,
                 )
             )
@@ -67,7 +67,3 @@ def load_approaches(cad_json_path=cad_json_path):
             )
 
     return collection
-
-
-if __name__ == "__main__":
-    load_neos()
