@@ -71,6 +71,7 @@ class AttributeFilter:
         raise UnsupportedCriterionError
 
     def __repr__(self):
+        """Return `repr(self)`, a computer-readable string representation of this object."""
         return f"{self.__class__.__name__}(op=operator.{self.op.__name__}, value={self.value})"
 
 
@@ -102,10 +103,7 @@ class VelocityFilter(AttributeFilter):
 
 
 class DiameterFilter(AttributeFilter):
-    """Filter on the diameter of the NEO attached to a close approach.
-    `DiameterFilter` represents the search criteria pattern comparing diameter
-    of the NEO attached to a close approach to a reference value.
-    """
+    """Filter on the diameter of the NEO attached to a close approach."""
 
     @classmethod
     def get(cls, approach):
@@ -198,7 +196,6 @@ def limit(iterator, n=None):
     :param n: The maximum number of values to produce.
     :yield: The first (at most) `n` values from the iterator.
     """
-    # TODO: Produce at most `n` values from the given iterator.
     if not n:
         return iterator
     else:
