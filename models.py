@@ -120,9 +120,6 @@ class CloseApproach:
 
     def __str__(self):
         """Return `str(self)`."""
-        # TODO: Use this object's attributes to return a human-readable string representation.
-        # The project instructions include one possibility. Peek at the __repr__
-        # method for examples of advanced string formatting.
         return (
             f"On {self.time_str}, '{self.neo.fullname}' approaches Earth "
             + f"at a distance of {self.distance:.2f} au "
